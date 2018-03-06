@@ -100,7 +100,11 @@ public class Cocos2dxHelper {
     // ===========================================================
 
     public static void runOnGLThread(final Runnable r) {
-        ((Cocos2dxActivity)sActivity).runOnGLThread(r);
+        try {
+            ((Cocos2dxActivity)sActivity).runOnGLThread(r);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private static boolean sInited = false;
