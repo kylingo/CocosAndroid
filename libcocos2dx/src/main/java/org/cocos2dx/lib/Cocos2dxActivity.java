@@ -34,16 +34,13 @@ import android.media.AudioManager;
 import android.opengl.GLSurfaceView;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
 import android.os.Message;
 import android.preference.PreferenceManager.OnActivityResultListener;
-import android.util.AttributeSet;
 import android.util.Log;
 import android.view.ViewGroup;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.FrameLayout;
 
 import com.cocos.analytics.CAAgent;
 
@@ -59,7 +56,7 @@ public abstract class Cocos2dxActivity extends Activity implements Cocos2dxHelpe
     // ===========================================================
 
     private final static String TAG = Cocos2dxActivity.class.getSimpleName();
-    private final static boolean CHECK_ROOT = false;
+    protected final static boolean IS_CHECK_ROOT = false;
 
     // ===========================================================
     // Fields
@@ -265,7 +262,7 @@ public abstract class Cocos2dxActivity extends Activity implements Cocos2dxHelpe
         super.onCreate(savedInstanceState);
 
         // Workaround in https://stackoverflow.com/questions/16283079/re-launch-of-activity-on-home-button-but-only-the-first-time/16447508
-        if (CHECK_ROOT && !isTaskRoot()) {
+        if (IS_CHECK_ROOT && !isTaskRoot()) {
             // Android launched another instance of the root activity into an existing task
             //  so just quietly finish and go away, dropping the user back into the activity
             //  at the top of the stack (ie: the last state of this task)

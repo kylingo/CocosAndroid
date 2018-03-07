@@ -7,7 +7,7 @@ import android.opengl.GLSurfaceView;
 import android.os.Bundle;
 
 public class SDKWrapper {
-	private final static boolean PACKAGE_AS = true;
+	private final static boolean PACKAGE_AS = false;
 	private static Class<?> mClass = null;
 
 	private static SDKWrapper mInstace = null;

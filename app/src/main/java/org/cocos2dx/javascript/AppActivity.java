@@ -26,20 +26,32 @@ THE SOFTWARE.
 ****************************************************************************/
 package org.cocos2dx.javascript;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.KeyEvent;
+import android.widget.Toast;
 
 import org.cocos2dx.lib.Cocos2dxActivity;
 import org.cocos2dx.lib.Cocos2dxGLSurfaceView;
 
 public class AppActivity extends Cocos2dxActivity {
 
+    protected final static String KEY_GAME_PATH = "key_game_path";
+
+    public static void launch(Context context, String gamePath) {
+        Intent intent = new Intent(context, AppActivity.class);
+        intent.putExtra(KEY_GAME_PATH, gamePath);
+        context.startActivity(intent);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // Workaround in https://stackoverflow.com/questions/16283079/re-launch-of-activity-on-home-button-but-only-the-first-time/16447508
-        if (!isTaskRoot()) {
+        if (IS_CHECK_ROOT && !isTaskRoot()) {
             // Android launched another instance of the root activity into an existing task
             //  so just quietly finish and go away, dropping the user back into the activity
             //  at the top of the stack (ie: the last state of this task)
@@ -47,8 +59,25 @@ public class AppActivity extends Cocos2dxActivity {
             return;
         }
         // DO OTHER INITIALIZATION BELOW
+        boolean result = addGameAssets();
+        if (!result) {
+            Toast.makeText(this, "Add game resource error", Toast.LENGTH_SHORT).show();
+            return;
+        }
         
         SDKWrapper.getInstance().init(this);
+    }
+
+    private boolean addGameAssets() {
+        Intent intent = getIntent();
+        if (intent != null) {
+            String gamePath = intent.getStringExtra(KEY_GAME_PATH);
+            if (!TextUtils.isEmpty(gamePath)) {
+                return GameAssetUtils.addAssetPath(this, gamePath);
+            }
+        }
+
+        return false;
     }
     
     @Override
@@ -132,5 +161,15 @@ public class AppActivity extends Cocos2dxActivity {
     protected void onStart() {
         SDKWrapper.getInstance().onStart();
         super.onStart();
+    }
+
+    @Override
+    public boolean dispatchKeyEvent(KeyEvent event) {
+        if (event.getKeyCode() == KeyEvent.KEYCODE_BACK
+                && event.getAction() == KeyEvent.ACTION_UP) {
+            finish();
+            return true;
+        }
+        return super.dispatchKeyEvent(event);
     }
 }
