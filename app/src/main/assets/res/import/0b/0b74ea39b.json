@@ -1,1 +1,0 @@
-[{"__type__":"cc.AnimationClip","_name":"Dead","_duration":0.1,"sample":10,"curveData":{"comps":{"cc.Sprite":{"spriteFrame":[{"frame":0,"value":{"__uuid__":"dd74KbnA1F76MqFZOP60QE"}}]}}}},{"__type__":"cc.SpriteFrame","content":{"name":"sheep_touch_01","texture":"c2ExdQNrNOz5U24IqLuuO4","rect":[305,372,176,129],"offset":[-5,15],"originalSize":[228,159]}}]
