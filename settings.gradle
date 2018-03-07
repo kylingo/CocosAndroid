@@ -1,1 +1,1 @@
-include ':app', ':libcocos2dx', ':libcocos2djs'
+include ':app', ':libcocos2dx', ':libcocos2djs', ':game-flybird', ':game-blackjack'

@@ -7,14 +7,26 @@
     android:layout_height="match_parent"
     tools:context="com.cocos.android.MainActivity">
 
-    <Button
-        android:id="@+id/btn_start"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Start"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/btn_brid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="愤怒的小羊"/>
+
+        <Button
+            android:id="@+id/btn_blackjack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="21点"/>
+    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

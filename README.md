@@ -20,11 +20,24 @@ Just contain jni files, ndk compile output libcocos2djs.so file.
 - Classes
     cp from jsb-binary/frameworks/runtime-src/Classes
 - hellojavascript
-    cp from proj.android-studio, like jni directory
+    cp from proj.android-studio/app/jni
 - Android.mk
     compile cocos2djs native library
 
-## Script
+## Game pack
+- res, src, main.js, project.json copy from ${buildDir}/../../../../../
+- script copy from "/Applications/CocosCreator.app/Contents/Resources/cocos2d-x/cocos/scripting/js-bindings/script"
+
+## Test
+See MainActivity in app module
+- cp output/game-xxx.apk to /mnt/sdcard/cocos/
+- run app module as apk
+
+## Issue
+- decrypt AppDelegate.cpp jsb_set_xxtea_key("key-value")
+- game back key handle
+
+
 
 
 
