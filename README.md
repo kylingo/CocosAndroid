@@ -29,8 +29,10 @@ Just contain jni files, ndk compile output libcocos2djs.so file.
 - script copy from "/Applications/CocosCreator.app/Contents/Resources/cocos2d-x/cocos/scripting/js-bindings/script"
 
 ## Test
-See MainActivity in app module
+See MainActivity in app module, support apk or zip file.
+- Open storage read and write permission
 - cp output/game-xxx.apk to /mnt/sdcard/cocos/
+- or cp output/game-xxx.zip to /mnt/sdcard/cocos/
 - run app module as apk
 
 ## Issue

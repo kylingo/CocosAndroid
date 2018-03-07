@@ -13,6 +13,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        findViewById(R.id.btn_zip).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String gamePath = FileUtils.getGamePath("/cocos/game-flybird.zip");
+                AppActivity.launch(MainActivity.this, gamePath);
+            }
+        });
+
         findViewById(R.id.btn_brid).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

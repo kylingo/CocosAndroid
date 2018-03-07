@@ -17,6 +17,12 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <Button
+            android:id="@+id/btn_zip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="愤怒的小羊Zip版"/>
+
+        <Button
             android:id="@+id/btn_brid"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
