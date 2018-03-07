@@ -39,7 +39,46 @@ See MainActivity in app module, support apk or zip file.
 - decrypt AppDelegate.cpp jsb_set_xxtea_key("key-value")
 - game back key handle
 
+## Patch for cocos android
+- Dynamic load game
+```
+// Load game by AssetManager.addAssetPath method
+public static boolean addAssetPath(Activity activity, String path) {
+    try {
+        AssetManager assetManager = activity.getAssets();
+        Object result = AssetManager.class.getDeclaredMethod("addAssetPath", String.class).invoke(
+                assetManager, path);
+        Log.i(TAG, "addAssetPath result:" + result.toString());
 
+        int resultInt = (int) result;
+        if (resultInt != 0) {
+            return true;
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+    return false;
+}
+```
+
+- Disable check task root
+```
+protected final static boolean IS_CHECK_ROOT = false;
+
+if (IS_CHECK_ROOT && !isTaskRoot()) {
+    // Android launched another instance of the root activity into an existing task
+    //  so just quietly finish and go away, dropping the user back into the activity
+    //  at the top of the stack (ie: the last state of this task)
+    // Don't need to finish it again since it's finished in super.onCreate .
+    return;
+}
+```
+
+- Disable decrypt js
+```
+// Modify AppDelegate.cpp, need dynamic set decrypt key
+// jsb_set_xxtea_key("3b4139a4-456c-42");
+```
 
 
 
