@@ -64,7 +64,6 @@ public static boolean addAssetPath(Activity activity, String path) {
 - Disable check task root
 ```
 protected final static boolean IS_CHECK_ROOT = false;
-
 if (IS_CHECK_ROOT && !isTaskRoot()) {
     // Android launched another instance of the root activity into an existing task
     //  so just quietly finish and go away, dropping the user back into the activity
