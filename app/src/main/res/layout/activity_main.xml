@@ -23,16 +23,22 @@
             android:text="愤怒的小羊Zip版"/>
 
         <Button
+            android:id="@+id/btn_directory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="愤怒的小羊目录版"/>
+
+        <Button
             android:id="@+id/btn_brid"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="愤怒的小羊"/>
+            android:text="愤怒的小羊Apk版"/>
 
         <Button
             android:id="@+id/btn_blackjack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="21点"/>
+            android:text="21点Apk版"/>
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
