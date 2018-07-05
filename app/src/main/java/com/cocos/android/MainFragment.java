@@ -1,5 +1,6 @@
 package com.cocos.android;
 
+import com.cocos.android.utils.FileUtils;
 import com.me.ui.library.sample.SampleFragment;
 
 import org.cocos2dx.javascript.AppActivity;
@@ -21,14 +22,13 @@ public class MainFragment extends SampleFragment<String> {
     protected void onClickItem(String item) {
         switch (item) {
             case "愤怒的小鸟": {
-                // Copy project output directory files to sdcard, then give storage permission.
-                String gamePath = FileUtils.getGamePath("/cocos/game-flybird.zip");
+                String gamePath = FileUtils.getGamePath(getActivity(), FileUtils.GAME_FLY_BIRD);
                 AppActivity.launch(getActivity(), gamePath);
                 break;
             }
 
             case "二十一点": {
-                String gamePath = FileUtils.getGamePath("/cocos/game-blackjack-debug.apk");
+                String gamePath = FileUtils.getGamePath(getActivity(), FileUtils.GAME_BLACKJACK);
                 AppActivity.launch(getActivity(), gamePath);
                 break;
             }

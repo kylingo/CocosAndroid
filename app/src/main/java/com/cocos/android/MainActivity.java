@@ -1,13 +1,16 @@
 package com.cocos.android;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 
+import com.cocos.android.utils.FileUtils;
 import com.me.ui.library.sample.SampleActivity;
 
-import org.cocos2dx.javascript.AppActivity;
-
 public class MainActivity extends SampleActivity {
+
+    private static final String KEY_COPY_GAME = "copy_game";
 
     @Override
     protected String getSampleTitle() {
@@ -22,26 +25,14 @@ public class MainActivity extends SampleActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // Copy assets game to cache directory
+        SharedPreferences sp = getSharedPreferences("cocos", Context.MODE_PRIVATE);
+        boolean isCopyGame = sp.getBoolean(KEY_COPY_GAME, false);
+        boolean isGameExist = FileUtils.isGameExist(this);
+        if (!isCopyGame || !isGameExist) {
+            FileUtils.copyGame(this);
+            sp.edit().putBoolean(KEY_COPY_GAME, true).apply();
+        }
     }
-
-    protected void test() {
-        String gamePath;
-
-        // Need zip assets directory, not game resource directory.
-        gamePath = FileUtils.getGamePath("/cocos/game-flybird.zip");
-        AppActivity.launch(MainActivity.this, gamePath);
-
-        // Need add assets directory, then add game resource in assets directory.
-        gamePath = FileUtils.getGamePath("/cocos/game-flybird");
-        AppActivity.launch(MainActivity.this, gamePath);
-
-        // Just add game resource into assets directory, then pack apk.
-        gamePath = FileUtils.getGamePath("/cocos/game-flybird-debug.apk");
-        AppActivity.launch(MainActivity.this, gamePath);
-
-        // Like the previous sample
-        gamePath = FileUtils.getGamePath("/cocos/game-blackjack-debug.apk");
-        AppActivity.launch(MainActivity.this, gamePath);
-    }
-
 }

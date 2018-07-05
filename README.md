@@ -1,6 +1,8 @@
 ## Cocos Android
 Android dynamic load cocos create game framework.
 
+[Click](https://www.pgyer.com/cocos-andorid) to download sample apk.
+
 ## Structure
 - libcocos2dx
 - libcocos2djs
@@ -29,16 +31,11 @@ Just contain jni files, ndk compile output libcocos2djs.so file.
 - script copy from "/Applications/CocosCreator.app/Contents/Resources/cocos2d-x/cocos/scripting/js-bindings/script"
 
 ## Test
-See MainActivity in app module, support apk, zip, directory.
-- Open storage read and write permission
-- cp output/game-xxx.apk to /mnt/sdcard/cocos/
-- or cp output/game-xxx.zip to /mnt/sdcard/cocos/
-- or unzip game-xxx.zip to /mnt/sdcard/game-xxx/
-- run app module as apk
+Just run app module as apk.
 
 ## Issue
 - decrypt AppDelegate.cpp jsb_set_xxtea_key("key-value")
-- game back key handle
+- game back key handle(Modify game activity to another process)
 
 ## Patch for cocos android
 - Dynamic load game
