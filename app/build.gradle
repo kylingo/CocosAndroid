@@ -2,18 +2,35 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 26
+
     defaultConfig {
         applicationId "com.cocos.android"
         minSdkVersion 15
         targetSdkVersion 26
-        versionCode 101
-        versionName "1.0.1"
+        versionCode 102
+        versionName "1.0.2"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
+    signingConfigs {
+        release {
+            storeFile file("kylingo.jks")
+            storePassword '!@kylingo'
+            keyAlias 'kylingo'
+            keyPassword '!@kylingo'
+        }
+    }
+
     buildTypes {
         release {
+            debuggable false
+            zipAlignEnabled true
+            shrinkResources false
+
+            // 不混淆
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
 }
