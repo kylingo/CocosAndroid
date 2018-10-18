@@ -3,6 +3,8 @@ Android dynamic load cocos create game framework.
 
 [Click](https://www.pgyer.com/cocos-andorid) to download sample apk.
 
+[Download apk](./release/CocosAndroid-release.apk)
+
 ## Structure
 - libcocos2dx
 - libcocos2djs
