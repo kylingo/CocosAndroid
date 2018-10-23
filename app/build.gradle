@@ -33,6 +33,11 @@ android {
             signingConfig signingConfigs.release
         }
     }
+
+//    packagingOptions{
+//        doNotStrip '*/mips/*.so'
+//        doNotStrip '*/mips64/*.so'
+//    }
 }
 
 dependencies {
