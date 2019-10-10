@@ -5,6 +5,9 @@ Android dynamic load cocos create game framework.
 
 [Download apk](./release/CocosAndroid-release.apk)
 
+## Environment
+- Ndk version less than 17
+
 ## Structure
 - libcocos2dx
 - libcocos2djs
